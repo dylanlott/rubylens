@@ -28,24 +28,11 @@ app.use(passport.session());
 //Controllers 
 var UserCtrl = require('./controllers/UserCtrl');
 
-//Models
-var User = require('./models/User');
-
-//Database
-var mongoUri = "mongodb://localhost:27017/builtright";
-mongoose.connect(mongoUri);
-mongoose.connection.once('open', function() {
-  console.log("Connected to db at " + mongoUri);
-});
-
 //Routes 
 app.use('/users', require('./routes/UserRoutes'));
 
-//Port
-var port = 8080;
-app.listen(process.env.EXPRESS_PORT || port, function() {
-  console.log("The Wolverine Pack is hunting on port ", port);
-});
+//Models
+var User = require('./models/User');
 
 //Local Login
 passport.use(new LocalStrategy({
@@ -96,3 +83,16 @@ app.post('/users/auth', passport.authenticate('local'), function(req, res) {
   return res.status(200).json(req.user).end();
 });
 app.get('/user', UserCtrl.getUser);
+
+//Database
+var mongoUri = "mongodb://localhost:27017/builtright";
+mongoose.connect(mongoUri);
+mongoose.connection.once('open', function() {
+  console.log("Connected to db at " + mongoUri);
+});
+
+//Port
+var port = 8080;
+app.listen(process.env.EXPRESS_PORT || port, function() {
+  console.log("The Wolverine Pack is hunting on port ", port);
+});
