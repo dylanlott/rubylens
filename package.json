@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/dylanlott/builtright/issues"
   },
-  "homepage": "https://github.com/dylanlott/builtright#readme"
+  "homepage": "https://github.com/dylanlott/builtright#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
