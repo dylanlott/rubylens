@@ -21,4 +21,4 @@ var buildSchema = new Schema({
 
 });
 
-module.exports = mongoose.model('User', buildSchema);
+module.exports = mongoose.model('Build', buildSchema);

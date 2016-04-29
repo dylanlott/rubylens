@@ -11,6 +11,7 @@ var cookieParser = require('cookie-parser');
 var bson = require('bson');
 var app = express();
 var router = express.Router();
+require('babel-core/register'); 
 
 //Middleware
 app.use(cors());
@@ -30,9 +31,17 @@ var UserCtrl = require('./controllers/UserCtrl');
 
 //Routes 
 app.use('/users', require('./routes/UserRoutes'));
+app.use('/builds', require('./routes/BuildRoutes')); 
 
 //Models
 var User = require('./models/User');
+
+//Database
+var mongoUri = "mongodb://localhost:27017/builtright";
+mongoose.connect(mongoUri);
+mongoose.connection.once('open', function() {
+  console.log("Connected to db at " + mongoUri);
+});
 
 //Local Login
 passport.use(new LocalStrategy({
@@ -83,13 +92,6 @@ app.post('/users/auth', passport.authenticate('local'), function(req, res) {
   return res.status(200).json(req.user).end();
 });
 app.get('/user', UserCtrl.getUser);
-
-//Database
-var mongoUri = "mongodb://localhost:27017/builtright";
-mongoose.connect(mongoUri);
-mongoose.connection.once('open', function() {
-  console.log("Connected to db at " + mongoUri);
-});
 
 //Port
 var port = 8080;
