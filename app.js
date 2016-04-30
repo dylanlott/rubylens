@@ -9,6 +9,7 @@ var session = require('express-session');
 var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bson = require('bson');
+var path = require('path'); 
 var app = express();
 var router = express.Router();
 require('babel-core/register'); 
@@ -17,6 +18,7 @@ require('babel-core/register');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
+
 app.use(cookieParser());
 app.use(session({
   secret: '1d5adg36s5vf2adr7vwefgv1e46b634',
@@ -94,7 +96,7 @@ app.post('/users/auth', passport.authenticate('local'), function(req, res) {
 });
 
 //Port
-var port = 8080;
+var port = 9000;
 app.listen(process.env.EXPRESS_PORT || port, function() {
   console.log("The Wolverine Pack is hunting on port ", port);
 });
