@@ -45,7 +45,7 @@ mongoose.connection.once('open', function() {
 
 //Local Login
 passport.use(new LocalStrategy({
-  usernameField: 'email',
+  usernameField: 'username',
   passwordField: 'password'
 }, function(username, password, done) {
   console.log(username, password)
@@ -67,7 +67,7 @@ passport.use(new LocalStrategy({
 //Authorization
 var requireAuth = function(req, res, next) {
   if (!req.isAuthenticated()) {
-    return res.status(403).send({ message: "Logged In" }).end();
+    return res.status(403).send({ message: "Not logged in." }).end();
   }
   return next();
 }
@@ -86,12 +86,12 @@ passport.deserializeUser(function(id, done) {
 /* Endpoints 
  **********************************************************************/
 //Auth
+app.get('/user', UserCtrl.getUser);
 app.post('/users', UserCtrl.createUser);
 app.post('/users/auth', passport.authenticate('local'), function(req, res) {
   console.log("Logged In");
   return res.status(200).json(req.user).end();
 });
-app.get('/user', UserCtrl.getUser);
 
 //Port
 var port = 8080;

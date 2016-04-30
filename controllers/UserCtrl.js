@@ -42,7 +42,7 @@ module.exports = {
 
   getUser: function(req, res){
     console.log("getUser activated"); 
-    return req.user; 
+    res.status(200).json(req.user).end(); 
   }
 
 }
