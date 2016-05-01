@@ -1,35 +1,44 @@
-<html lang="en" >
+<!DOCTYPE html>
+<html data-ng-app="app">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Angular Material style sheet -->
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+    <title>NG Jump-Start</title>
+    <link rel="stylesheet" href="content/bootstrap.css"/>
+    <link rel="stylesheet" href="content/styles.css"/>
+    <link rel="stylesheet" href="content/animations.css"/>
 </head>
-<body ng-app="BuiltRight" ng-cloak>
-  <!--
-    Your HTML content here
-  -->  
-  
-  <!-- Angular Material requires Angular.js Libraries -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+<body class="container">
+    <header class="navbar navbar-inverse navbar-fixed-top ani-nav" role="banner">
+        <div class="navbar-header">
+            <a href="http://johnpapa.net" class="navbar-brand">John Papa</a>
+            <a href="#" class="navbar-brand">Angular Jump-Start Demos</a>
+        </div>
+    </header>
 
-  <!-- Angular Material Library -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
-  
-  <!-- Your application bootstrap  -->
-  <script type="text/javascript">    
-    /**
-     * You must include the dependency on 'ngMaterial' 
-     */
-    angular.module('BuiltRight', ['ngMaterial']);
-  </script>
-  
+    <div class="example-animate-container">
+        <div class="shuffle-animation">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="index0_databinding.html">data binding</a></li>
+                <li><a href="index1_ngrepeat.html">ng-repeat</a></li>
+                <li><a href="index2_controller_di.html">controller and dependency injection</a></li>
+                <li><a href="index3_controlleras.html">controller as</a></li>
+                <li><a href="index3_jquery.html">using jquery</a></li>
+                <li><a href="index4_service.html">services and factories</a></li>
+                <li><a href="index5_http.html">$http and ng-class</a></li>
+                <li><a href="index6_route.html">routes, ng-view, ng-include, ng-if and animations</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="scripts/jquery-2.0.3.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.js"></script>
+    <script src="scripts/angular-animate.js"></script>
+
+    <script src="app/app.module.js"></script>
+    <script src="app/people/people2.controller.js"></script>
+    <script src="app/people/people.service.js"></script>
+    <script src="app/avengers/avengers.controller.js"></script>
+    <script src="app/avengers/avengers.service.js"></script>
 </body>
 </html>
-
-<!--
-Copyright 2016 Google Inc. All Rights Reserved. 
-Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
--->
