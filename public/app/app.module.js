@@ -5,12 +5,14 @@
             .module('app', ['ngAnimate', 'ngRoute'])
             .config(routeConfig);
         
-        routeConfig.$inject = ['$routeProvider'];
+        routeConfig.$inject = ['$routeProvider', '$locationProvider'];
 
-        function routeConfig($routeProvider) {
+        function routeConfig($routeProvider, $locationProvider) {
             $routeProvider
                 .when('/',{ templateUrl: 'app/people/people.html', title: 'people'})
                 .when('/avengers',{ templateUrl: 'app/avengers/avengers.html', title: 'avengers'})
                 .otherwise({ redirectTo: '/' });
+
+            $locationProvider.html5Mode(true); //remove # from urls 
         }
     })();
