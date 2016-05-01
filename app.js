@@ -10,14 +10,12 @@ var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bson = require('bson');
 var path = require('path'); 
-// var lessMiddleware = require('less-middleware');
 var app = express();
 var router = express.Router();
 
 //Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use(require('less-middleware')({ src: __dirname + '/public/content/less' }));
 app.use(express.static(__dirname + "/public"));
 
 app.use(cookieParser());
