@@ -1,14 +1,31 @@
 //Custom Styles 
 //Body 
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,400italic);
+
 body {
   margin: 5em 0 0 0;
 }
 
+h1, 
+h2,
+h3,
+h4,
+h5,
+h6, 
+p, 
+table,
+.btn {
+  font-family: 'Roboto'; 
+}
 .row {
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
+.nav, .navbar-brand {
+  font-family: 'Roboto';
+}
 //Navigation 
 .nav > li > a {
   color: #eee !important; 
