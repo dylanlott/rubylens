@@ -1,0 +1,15 @@
+//Custom Styles 
+//Body 
+body {
+  margin: 5em 0 0 0;
+}
+
+.row {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+//Navigation 
+.nav > li > a {
+  color: #eee !important; 
+}
