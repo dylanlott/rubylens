@@ -1,22 +1,22 @@
-    (function () {
-        'use strict';
+(function() {
+  'use strict';
 
-        angular
-            .module('app', ['ngAnimate', 'ngRoute'])
-            .config(routeConfig);
-        
-        routeConfig.$inject = ['$routeProvider', '$locationProvider'];
+  angular
+    .module('app', ['ngAnimate', 'ngRoute'])
+    .config(routeConfig);
 
-        function routeConfig($routeProvider, $locationProvider) {
-            $routeProvider
-                // .when('/',{ templateUrl: 'app/people/people.html', title: 'people'})
-                // .when('/avengers',{ templateUrl: 'app/avengers/avengers.html', title: 'avengers'})
-                .when('/', {
-                    templateUrl: 'app/builds/builds.html', 
-                    title: 'builds'
-                })
-                .otherwise({ redirectTo: '/' });
+  routeConfig.$inject = ['$routeProvider', '$locationProvider'];
 
-            $locationProvider.html5Mode(true); //remove # from urls 
-        }
-    })();
+  function routeConfig($routeProvider, $locationProvider) {
+    $routeProvider
+    // .when('/',{ templateUrl: 'app/people/people.html', title: 'people'})
+    // .when('/avengers',{ templateUrl: 'app/avengers/avengers.html', title: 'avengers'})
+      .when('/', {
+        templateUrl: 'app/builds/builds.html',
+        title: 'builds'
+      })
+      .otherwise({ redirectTo: '/' });
+
+    $locationProvider.html5Mode(true); //remove # from urls 
+  }
+})();
