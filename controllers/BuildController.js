@@ -4,21 +4,21 @@ var Build = require('../models/Build.js');
 module.exports = {
 
   create: function(req, res){
+    console.log("Create Build activated.", req.body); 
     var newBuild = new Build(req.body); 
     newBuild.owner = req.user._id; 
-    newBuild.save(function(data){
+    newBuild.save(function(err, data){
       console.log("create build: ", data); 
-      res.status(200).json(data).end(); 
-    })
-    .then(function(){
-      console.log("create build then "); 
-    })
-    .catch(function(err){
-      res.status(500).send(err).end(); 
+      if(err){
+        res.status(500).send(err).end(); 
+      }else{
+        res.status(200).json(data).end(); 
+      }
     }); 
   },
 
   getAll: function(req, res){
+    console.log("get all builds: ", req.user); 
     Build 
       .find({ owner: req.user._id })
       .exec()
