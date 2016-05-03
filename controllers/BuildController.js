@@ -52,6 +52,31 @@ module.exports = {
       .catch(function(err){
         res.status(500).send(err).end(); 
       })
+  },
+
+  addComment: function(req, res){
+    Build
+      .findOne({_id: req.params.id}, function(err, build){
+        console.log("add comment, find build: ", build); 
+        build.comments.push({
+          body: req.body.body, 
+          user: req.user._id
+        })
+        build.save(function(err, data){
+          if(err){
+            console.log("Error adding comment: ", err); 
+            res.status(500).send("error: can't add comment.").end(); 
+          }else{
+            res.status(200).json(data).end(); 
+          }
+        })
+      })
+      .then(function(){
+        console.log("then function add comment: "); 
+      })
+      .catch(function(err){
+        if(err) console.log("error adding comment: ", err);
+      })
   }
 
 }

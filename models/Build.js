@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Part = require('./Part');
-// var Comment = require('./Comment');
+var commentSchema = require('./Comment').schema;
 
-var Comment = new Schema({
-  date: {type: Date, default: Date.now}, 
-  Body: {type: String}
-})
+// var Comment = new Schema({
+//   date: { type: Date, default: Date.now },
+//   body: { type: String },
+//   owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+// })
 
 var buildSchema = new Schema({
 
@@ -18,13 +19,7 @@ var buildSchema = new Schema({
   options: { type: String },
   swap: { type: String },
   date_added: { type: Date, default: Date.now },
-  // parts: [Part],
-  // comments: [{
-  //   body: { type: String }, 
-  //   date: { type: Date, default: Date.now},
-  //   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-  // }]
-  comments: [Comment]
+  comments: [commentSchema]
 
 });
 

@@ -1,5 +1,9 @@
-# builtright
+# BUILTRIGHT
 Car build tracker 
+
+### Style guide 
+
+#### Colors
 
 
 ### POST `/users` 
@@ -17,3 +21,12 @@ Car build tracker
 	}
 
 
+### GET `/builds`
+````
+Returns all builds for the logged in user 
+
+### GET `/builds/:id` 
+Returns details of one build with ID of `:id` 
+
+### PUT `/builds/:id` 
+Updates the build with ID of `:id` 

@@ -7,6 +7,8 @@ module.exports = function(){
   app.get('/:id', Build.getOne); 
   app.post('/', Build.create); 
   app.delete('/:id', Build.delete);
+  // app.put('/:id', Build.update); Not tested yet 
   
+  app.post('/comment/:id', Build.addComment); 
   return app;
 }();
