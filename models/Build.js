@@ -1,13 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Part = require('./Part');
+var partSchema = require('./Part').schema;
 var commentSchema = require('./Comment').schema;
-
-// var Comment = new Schema({
-//   date: { type: Date, default: Date.now },
-//   body: { type: String },
-//   owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-// })
 
 var buildSchema = new Schema({
 
@@ -19,6 +13,7 @@ var buildSchema = new Schema({
   options: { type: String },
   swap: { type: String },
   date_added: { type: Date, default: Date.now },
+  parts: [partSchema],
   comments: [commentSchema]
 
 });

@@ -30,3 +30,11 @@ Returns details of one build with ID of `:id`
 
 ### PUT `/builds/:id` 
 Updates the build with ID of `:id` 
+
+### POST `/builds/comment/:id` 
+Adds a comment to the build. 
+
+````
+{
+"body":"comment body"
+}

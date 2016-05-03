@@ -70,13 +70,27 @@ module.exports = {
             res.status(200).json(data).end(); 
           }
         })
-      })
-      .then(function(){
-        console.log("then function add comment: "); 
-      })
-      .catch(function(err){
-        if(err) console.log("error adding comment: ", err);
-      })
+      }); 
+  },
+
+  addPart: function(req, res){
+    Build
+      .findOne({_id: req.params.id}, function(err, build){
+        console.log("add part to build: ", build); 
+        build.parts.push({
+          name: req.body.name, 
+          url: req.body.url, 
+          price: req.body.price
+        }); 
+        build.save(function(err, data){
+          if(err){
+            console.log("Error adding part: ", err); 
+            res.status(500).send(err).end(); 
+          }else{
+            res.status(200).json(data).end(); 
+          }
+        })
+      }); 
   }
 
 }
