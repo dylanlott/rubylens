@@ -17,12 +17,11 @@ Car build tracker
 
 ### POST `/users/auth` 
 
-````	
-	{
-	    "username":"lott.dylan@gmail.com", 
-	    "password":"password"
-	}
-
+````
+{
+    "username":"lott.dylan@gmail.com", 
+    "password":"password"
+}
 
 
 ### GET `/builds`
