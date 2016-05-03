@@ -1,5 +1,5 @@
 # BUILTRIGHT
-Car build tracker 
+A build tracker for the auto enthusiast. 
 
 ### Style guide 
 
@@ -26,7 +26,7 @@ Car build tracker
 
 ### GET `/builds`
 
-Returns all builds for the logged in user 
+Returns all builds for the logged in user. 
 
 
 ### GET `/builds/:id` 
@@ -36,10 +36,10 @@ Returns details of one build with ID of `:id`
 ### PUT `/builds/:id` 
 Updates the build with ID of `:id` 
 
+
 ### POST `/builds/comment/:id` 
 
-Adds a comment to the build. 
-
+Adds a comment to the build. Takes an object with property "body". 
 
 ````
 {
