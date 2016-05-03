@@ -91,6 +91,24 @@ module.exports = {
           }
         })
       }); 
+  },
+
+  /*
+
+  TODO: Finish delete comment endpoint 
+  
+  deleteComment: function(req, res){
+    Build
+      .findOne({ _id: req.params.id}, function(err, build){
+        //loop through build comments, 
+
+        //tick counter 
+
+        //array.splice(x, 1); 
+
+        //res.send(200).json(build).end(); 
+      })
   }
+  */
 
 }
