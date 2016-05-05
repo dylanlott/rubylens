@@ -13,7 +13,7 @@
 		.module('builds')
 		.controller('BuildsCtrl', Builds);
 
-		Builds.$inject = [];
+		Builds.$inject = ['BuildsService'];
 
 		/*
 		* recommend
@@ -26,6 +26,11 @@
 			var vm = this;
 
 			console.log("BuildsCtrl running. " ); 
+			activate(); 
+
+			function activate(){
+				BuildsService.getBuilds(); 
+			}
 
 		}
 
