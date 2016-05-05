@@ -21,7 +21,7 @@
 		* and bindable members up top.
 		*/
 
-		function Builds() {
+		function Builds(BuildsService, $http) {
 			/*jshint validthis: true */
 			var vm = this;
 
