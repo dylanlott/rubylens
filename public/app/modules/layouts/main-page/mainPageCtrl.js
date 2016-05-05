@@ -29,8 +29,6 @@
 			$mdSidenav(menuId).toggle();
 		};
 
-		console.log("hello"); 
-
 		vm.changePassword = function () {
 			$mdToast.show(
 				$mdToast.simple()

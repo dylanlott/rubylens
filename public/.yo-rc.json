@@ -5,6 +5,17 @@
     "angularAnimate": true,
     "angularSanitize": true,
     "angularBootstrap": true,
-    "angularMaterial": true
+    "angularMaterial": true,
+    "modules": [
+      {
+        "name": "builds"
+      }
+    ],
+    "menu": [
+      {
+        "link": "builds",
+        "title": "Builds"
+      }
+    ]
   }
 }
