@@ -21,6 +21,7 @@
     'ngAnimate',
     'ngSanitize',
     'ui.router',
+    'firebase', 
     'home',
     'builds'
   ]);
