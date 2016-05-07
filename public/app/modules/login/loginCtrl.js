@@ -46,8 +46,8 @@
 
   // }
 
-   Login.$inject = ['$firebaseAuth', '$firebaseObject', '$state', 'firebaseUrl'];
-    function Login ($firebaseAuth, $firebaseObject, $state, firebaseUrl) {
+   Login.$inject = ['$firebaseAuth', '$firebaseObject', '$state', 'firebaseUrl', '$log'];
+    function Login ($firebaseAuth, $firebaseObject, $state, firebaseUrl, $log) {
 
             var vm = this;
             vm.isLoggedIn  = false;
@@ -99,6 +99,33 @@
                 $state.go('home');
             }
             
+
+            vm.createUser = function(user){
+            	ref.createUser({
+            		email: user.email,
+            		password: user.password
+            	}, function(err, user){
+            		if(err){
+            			$log.warn("Error creating user: ", err);
+            		}else{
+            			$log.log("created user: ", user);  
+            		}
+            	})
+            }
+
+            vm.loginUser = function(user){
+            	ref.authWithPassword({
+            		email: user.email, 
+            		password: user.password
+            	}, function(err, user){
+            		if(err){
+            			$log.warn("Error creating user: ", err); 
+            		}else{
+            			$log.log("Auth data: ", user); 
+            		}
+            	})
+            }
+
             var firebaseAuthLogin = function(provider){
                 authObj.$authWithOAuthPopup(provider).then(function (authData) {
                     console.log("Authenticated successfully with provider " + provider +" with payload:", authData);
@@ -107,6 +134,7 @@
                 });
                 
             }
+            
             vm.googleLogin = function () {
                     firebaseAuthLogin('google');
             }
