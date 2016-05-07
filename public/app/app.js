@@ -7,7 +7,7 @@
    * @description
    * # app
    *
-   * Main module of the application.
+   * Main modules of the application.
    */
 
   angular.module('builtright', [
@@ -16,14 +16,16 @@
     'ui.bootstrap',
     'ngMaterial',
     'ngMdIcons',
-    'ngMessages',
     'ngCookies',
     'ngAnimate',
+    'ngTouch',
     'ngSanitize',
     'ui.router',
-    'firebase', 
     'home',
-    'builds'
-  ]);
+    'builds',
+    'login',
+    'firebase'
+  ])
+  .constant('firebaseUrl', 'https://builtright.firebaseio.com/');
 
 })();
