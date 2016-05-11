@@ -1,24 +1,30 @@
 (function() {
-	'use strict';
+  'use strict';
 
-	/**
-	 * @ngdoc function
-	 * @name app.service:loginService
-	 * @description
-	 * # loginService
-	 * Service of the app
-	 */
+  /**
+   * @ngdoc function
+   * @name app.service:loginService
+   * @description
+   * # loginService
+   * Service of the app
+   */
 
-  	angular
-		.module('login')
-		.factory('LoginService', Login);
-		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
-		// function Name ($http, someSevide) {...}
+  angular
+    .module('login')
+    .factory('LoginService', Login);
+  // Inject your dependencies as .$inject = ['$http', 'someSevide'];
+  // function Name ($http, someSevide) {...}
 
-		Login.$inject = ['$http'];
+  Login.$inject = ['firebaseUrl', '$firebaseAuth'];
 
-		function Login ($http) {
+  function Login(firebaseUrl, $firebaseAuth) {
+    return {
+      authUser: function() {
+        var ref = new Firebase(firebaseUrl);
+        return $firebaseAuth(ref);
+      }
+    }
 
-		}
+  }
 
 })();

@@ -19,33 +19,6 @@
    * and bindable members up top.
    */
 
-  // function Login($firebaseAuth) {
-  //   /*jshint validthis: true */
-  //   var vm = this;
-
-  //   var ref = new Firebase("https://builtright.firebaseio.com");
-
-  //   // create an instance of the authentication service
-  //   var auth = $firebaseAuth(ref);
-  //   // login with Facebook
-
-  //   function authHandler(error, authData) {
-  //     if (error) {
-  //       console.log("Login Failed!", error);
-  //     } else {
-  //       console.log("Authenticated successfully with payload:", authData);
-  //     }
-  //   }
-
-  //  	var loginUser = function(user){
-  //    ref.authWithPassword({
-  //      email: user.email,
-  //      password: user.password
-  //    }, authHandler);
-  //  	}
-
-  // }
-
   Login.$inject = ['$firebaseAuth', '$firebaseObject', '$state', 'firebaseUrl', '$log'];
 
   function Login($firebaseAuth, $firebaseObject, $state, firebaseUrl, $log) {
@@ -59,10 +32,27 @@
     //initialize and get current authenticated state:
     init();
 
+    function authDataCallback(authData) {
+      if (authData) {
+        console.log("User " + authData.uid + " is logged in with " + authData.provider);
+      } else {
+        console.log("User is logged out");
+      }
+    }
+
+    ref.onAuth(authDataCallback);
+
     function init() {
       authObj.$onAuth(authDataCallback);
       if (authObj.$getAuth()) {
         vm.isLoggedIn = true;
+      }
+
+      var authData = ref.getAuth();
+      if (authData) {
+        console.log("User " + authData.uid + " is logged in with " + authData.provider);
+      } else {
+        console.log("User is logged out");
       }
 
     }
@@ -95,20 +85,28 @@
         vm.isLoggedIn = false;
       }
     }
-    
+
     vm.logout = function() {
       ref.unauth();
-      $state.go('home');
+      $state.go('home.dashboard');
     }
 
-    vm.createUser = function(user) {
+    vm.createUser = function(userObject) {
       ref.createUser({
-        email: user.email,
-        password: user.password
+        email: userObject.email,
+        password: userObject.password
       }, function(err, user) {
         if (err) {
           $log.warn("Error creating user: ", err);
         } else {
+          ref.authWithPassword({
+            email: userObject.email,
+            password: userObject.password
+          }, function(err, data) {
+            if (err) $log.warn("Error logging in")
+
+          });
+
           $log.log("created user: ", user);
           $mdToast.show(
             $mdToast.simple()
@@ -116,6 +114,7 @@
             .position('top right')
             .hideDelay(2000)
           );
+
           $state.go('home');
         }
       })
@@ -128,7 +127,15 @@
       }, function(err, user) {
         if (err) {
           $log.warn("Error creating user: ", err);
+          $mdToast.show(
+            $mdToast.simple()
+            .content('Thanks for signing up!')
+            .position('top right')
+            .hideDelay(2000)
+          );
+          $state.go('home.dashboard');
         } else {
+          $state.go('home.dashboard'); 
           $log.log("Auth data: ", user);
         }
       })
