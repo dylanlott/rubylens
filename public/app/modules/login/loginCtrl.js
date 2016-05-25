@@ -21,7 +21,7 @@
 
   Login.$inject = ['$firebaseAuth', '$firebaseObject', '$state', 'firebaseUrl', '$log'];
 
-  function Login($firebaseAuth, $firebaseObject, $state, firebaseUrl, $log) {
+  function Login($firebaseAuth, $firebaseObject, $state, firebaseUrl, $log, $mdToast) {
 
     var vm = this;
     vm.isLoggedIn = false;
@@ -120,22 +120,16 @@
       })
     }
 
-    vm.loginUser = function(user) {
+    vm.loginUser = function(user, $mdToast) {
       ref.authWithPassword({
         email: user.email,
         password: user.password
       }, function(err, user) {
         if (err) {
           $log.warn("Error creating user: ", err);
-          $mdToast.show(
-            $mdToast.simple()
-            .content('Thanks for signing up!')
-            .position('top right')
-            .hideDelay(2000)
-          );
           $state.go('home.dashboard');
         } else {
-          $state.go('home.dashboard'); 
+          $state.go('home.dashboard');
           $log.log("Auth data: ", user);
         }
       })

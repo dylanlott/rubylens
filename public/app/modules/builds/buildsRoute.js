@@ -16,12 +16,7 @@ angular.module('builds')
         url: '/builds',
         templateUrl: 'app/modules/builds/builds.html',
         controller: 'BuildsCtrl',
-        controllerAs: 'vm',
-        resolve: {
-          authUser: function(){
-          	var ref = new Firebase(firebaseUrl)
-          }
-        }
+        controllerAs: 'vm'
       });
 
 

@@ -15,7 +15,7 @@
 
 	// Injecting Denpendencies
 
-	SidenavCtrl.$inject = ['$log', '$mdSidenav', '$state', '$mdBottomSheet', '$mdToast', 'MenuService', '$scope', 'LoginService'];
+	SidenavCtrl.$inject = ['$log', '$mdSidenav', 'firebaseUrl', '$state', '$mdBottomSheet', '$mdToast', 'MenuService', '$scope', 'LoginService'];
 	SettingsCtrl.$inject = ['$mdBottomSheet'];
 
 	/*
@@ -24,11 +24,9 @@
 	* and bindable members up top.
 	*/
 
-	function SidenavCtrl($log, $mdSidenav, $state, $mdBottomSheet, $mdToast, MenuService, $scope, LoginService) {
+	function SidenavCtrl($log, firebaseUrl, $mdSidenav, $state, $mdBottomSheet, $mdToast, MenuService, $scope, LoginService) {
 		/*jshint validthis: true */
 		var vm = this;
-
-		vm.auth = LoginService.authUser; 
 
 		vm.toggleSidenav = function (menuId) {
 			$mdSidenav(menuId).toggle();

@@ -11,20 +11,16 @@
 
   angular
     .module('login')
-    .factory('LoginService', Login);
+    .factory('LoginService', LoginService);
   // Inject your dependencies as .$inject = ['$http', 'someSevide'];
   // function Name ($http, someSevide) {...}
 
-  Login.$inject = ['firebaseUrl', '$firebaseAuth'];
+  LoginService.$inject = ['firebaseUrl', '$firebaseAuth', '$log'];
 
-  function Login(firebaseUrl, $firebaseAuth) {
-    return {
-      authUser: function() {
-        var ref = new Firebase(firebaseUrl);
-        return $firebaseAuth(ref);
-      }
-    }
-
+  function LoginService(firebaseUrl, $firebaseAuth, $log) {
+    $log.log("LoginService called."); 
+    var LoginService = {}
+    return LoginService; 
   }
 
 })();
