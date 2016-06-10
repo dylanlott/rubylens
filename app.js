@@ -33,6 +33,7 @@ var UserCtrl = require('./controllers/UserCtrl');
 //Routes 
 app.use('/users', require('./routes/UserRoutes'));
 app.use('/builds', require('./routes/BuildRoutes')); 
+app.use('/parts', require('./routes/PartRoutes')); 
 
 //Models
 var User = require('./models/User');

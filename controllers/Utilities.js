@@ -1,49 +1,60 @@
-var q = require('q'); 
+var q = require('q');
 
 module.exports = {
 
-  create: function(model, body, ){
-    var dfd = q.defer(); 
-    var newModel = new model(body); 
-    newModel.save(function(err, data){
-      if(err){
-        return dfd.reject(err);  
-      }else {
-        return dfd.resolve(data); 
+  create: function(model, body) {
+    var dfd = q.defer();
+    var newModel = new model(body);
+    newModel.save(function(err, data) {
+      if (err) {
+        return dfd.reject(err);
+      } else {
+        return dfd.resolve(data);
       }
-    }); 
-    return dfd.promise; 
+    });
+    return dfd.promise;
   },
 
-  readAll: function(model, user_id){
-    var dfd = q.defer(); 
-    model.find({onwer: user_id})
-    .exec()
-    .then(function(data, err){
-      if(err){
-        return dfd.reject(err); 
-      }else{
-        return dfd.resolve(data); 
-      }
-    })
-    return dfd.promise; 
+  readAll: function(model, user_id) {
+    var dfd = q.defer();
+    model.find({ onwer: user_id })
+      .exec()
+      .then(function(data, err) {
+        if (err) {
+          return dfd.reject(err);
+        } else {
+          return dfd.resolve(data);
+        }
+      })
+    return dfd.promise;
   },
 
-  readOne: function(model, id){
-    var dfd = q.defer(); 
+  readOne: function(model, id) {
+    var dfd = q.defer();
     model.findById(id)
-    .then(function(data, err){
-      if(err){
-        return dfd.reject(err); 
-      }else{
-        return dfd.resolve(data); 
-      }
-    }); 
-    return dfd.promise; 
-  }, 
+      .then(function(data, err) {
+        if (err) {
+          return dfd.reject(err);
+        } else {
+          return dfd.resolve(data);
+        }
+      });
+    return dfd.promise;
+  },
 
-  delete: function(model, id){
-    
+  delete: function(model, id) {
+
+  },
+
+
+// *******************************************************************************/
+// Auth Utilities 
+// *******************************************************************************/
+  requireAuth: function(req, res, next) {
+    if (!req.isAuthenticated()) {
+      return res.status(403).json({ "message": "Not logged in." }).end();
+    }
+    return next();
   }
 }
 
@@ -124,4 +135,4 @@ module.exports = {
 //     })
 //   return dfd.promise
 // }
-//  
+//
