@@ -93,6 +93,26 @@ module.exports = {
       }); 
   },
 
+  calculateCost: function(req, res){
+    Build
+      .findOne({_id: req.params.id}, function(err, build){
+        var total = 0; 
+        var arr = build.parts; 
+
+        for(var i=0; i < build.parts.length; i++){
+          console.log(arr[i]); 
+          total += arr[i].price; 
+        }
+        console.log("End total: ", total); 
+        var totalCost = {
+          "build": req.params.id, 
+          "name": build.name, 
+          "total_cost": total
+        }
+        res.status(200).json(totalCost).end(); 
+      })
+  }
+
   /*
 
   TODO: Finish delete comment endpoint 

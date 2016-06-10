@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var partSchema = require('./Part').schema;
-var Part = require('./Part'); 
+var Part = require('./Part');
 var commentSchema = require('./Comment').schema;
 var buildSchema = new Schema({
 
@@ -10,35 +10,35 @@ var buildSchema = new Schema({
   make: { type: String },
   model: { type: String },
   trim: { type: String },
+  color: { type: String },
   options: { type: String },
   swap: { type: String },
   date_added: { type: Date, default: Date.now },
+  mileage: { type: Number },
   parts: [partSchema],
   comments: [commentSchema]
 
 });
 
 buildSchema.pre('save', function(next) {
-  var build = this; 
-  build.parts.forEach(function(part){
-    console.log("Part: ", part);
+  var build = this;
+  build.parts.forEach(function(part) {
     var body = {
-      "name": part.name, 
-      "url": part.url, 
+      "name": part.name,
+      "url": part.url,
       "price": part.price
     }
-    var newPart = new Part(body); 
-    newPart.owner = build.owner; 
-    newPart.save(function(err, data){
-      if(err){
+    var newPart = new Part(body);
+    newPart.owner = build.owner;
+    newPart.save(function(err, data) {
+      if (err) {
         console.error("Error saving part from build: ", err)
-      }else{
-        console.log("Part(s) saved: ", data); 
+      } else {
+        console.log("Part(s) saved: ", data);
       }
-    }); 
+    });
   });
-  console.log(build);  
-  return next(); 
+  return next();
 });
 
 

@@ -10,10 +10,10 @@ module.exports = function(){
   app.get('/:id', Build.getOne); 
   app.post('/', Build.create); 
   app.delete('/:id', Build.delete);
+  app.get('/:id/cost', Build.calculateCost); 
   // app.put('/:id', Build.update); Not tested yet 
-  
   app.post('/comment/:id', Build.addComment); 
-
   app.post('/parts/:id', Build.addPart); 
+
   return app;
 }();
