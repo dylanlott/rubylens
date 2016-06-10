@@ -67,3 +67,7 @@ Takes an object of
 		"price": part.price
 	}
 ````
+
+### GET `/builds/:id/cost`
+
+Return an object with the `total_cost` of the build as well as the build `name` and `build_id`
