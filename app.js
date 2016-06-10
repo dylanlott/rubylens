@@ -95,6 +95,11 @@ app.post('/users/auth', passport.authenticate('local'), function(req, res) {
   return res.status(200).json(req.user).end();
 });
 
+app.get('/logout', function(req, res){
+  req.logout(); 
+  res.status(200).redirect('/'); 
+})
+
 //Port
 var port = 4000;
 app.listen(process.env.EXPRESS_PORT || port, function() {

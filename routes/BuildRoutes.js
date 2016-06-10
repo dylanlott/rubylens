@@ -3,8 +3,10 @@ module.exports = function(){
   var app = express();
   var Build = require('../controllers/BuildController.js');
   var Util = require('../controllers/Utilities.js'); 
+  
+  app.all('/*', Util.requireAuth); 
 
-  app.get('/', Util.requireAuth, Build.getAll);
+  app.get('/', Build.getAll);
   app.get('/:id', Build.getOne); 
   app.post('/', Build.create); 
   app.delete('/:id', Build.delete);
