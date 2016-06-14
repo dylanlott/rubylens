@@ -32,14 +32,12 @@ var UserCtrl = require('./controllers/UserCtrl');
 
 //Routes 
 app.use('/users', require('./routes/UserRoutes'));
-app.use('/builds', require('./routes/BuildRoutes')); 
-app.use('/parts', require('./routes/PartRoutes')); 
 
 //Models
 var User = require('./models/User');
 
 //Database
-var mongoUri = "mongodb://localhost:27017/builtright";
+var mongoUri = process.env.MONGO_URI || "mongodb://localhost:27017/rubylens";
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function() {
   console.log("Connected to db at " + mongoUri);
