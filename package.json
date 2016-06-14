@@ -1,7 +1,7 @@
 {
   "name": "rubylens",
   "version": "0.0.1",
-  "description": "Car build tracker app ",
+  "description": "WarHammer figurine portfolio viewer and uploader.",
   "main": "app.js",
   "engines": {
     "node": "4.2.x", 
