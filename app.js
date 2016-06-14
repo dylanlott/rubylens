@@ -1,4 +1,4 @@
-//STUDIOKEEPER
+//RUBYLENS
 //REQUIRES
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -20,7 +20,7 @@ app.use(express.static(__dirname + "/public"));
 
 app.use(cookieParser());
 app.use(session({
-  secret: '1d5adg36s5vf2adr7vwefgv1e46b634',
+  secret: 'T:4N?78KO]oG9fT}7Ew9=Nu_TnM9Uq',
   resave: false,
   saveUninitialized: true
 }));
