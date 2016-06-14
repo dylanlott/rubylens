@@ -15,9 +15,14 @@
     .config(configure)
     .run(runBlock);
 
-  configure.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider'];
+  configure.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', 
+  '$mdThemingProvider'];
 
-  function configure($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+  function configure($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
+
+    $mdThemingProvider.theme('default')
+      .primaryPalette('red')
+      .accentPalette('grey')
 
     $locationProvider.hashPrefix('!');
 
