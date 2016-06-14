@@ -37,11 +37,11 @@ app.use('/users', require('./routes/UserRoutes'));
 var User = require('./models/User');
 
 //Database
-var mongoUri = process.env.MONGO_URI || "mongodb://localhost:27017/rubylens";
-mongoose.connect(mongoUri);
-mongoose.connection.once('open', function() {
-  console.log("Connected to db at " + mongoUri);
-});
+// var mongoUri = process.env.MONGO_URI || "mongodb://localhost:27017/rubylens";
+// mongoose.connect(mongoUri);
+// mongoose.connection.once('open', function() {
+//   console.log("Connected to db at " + mongoUri);
+// });
 
 //Local Login
 passport.use(new LocalStrategy({
