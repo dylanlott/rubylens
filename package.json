@@ -1,21 +1,25 @@
 {
-  "name": "builtright",
-  "version": "1.0.0",
+  "name": "rubylens",
+  "version": "0.0.1",
   "description": "Car build tracker app ",
   "main": "app.js",
+  "engines": {
+    "node": "4.2.x", 
+    "npm": "3.9.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dylanlott/builtright.git"
+    "url": "git+https://github.com/dylanlott/rubylens.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dylanlott/builtright/issues"
+    "url": "https://github.com/dylanlott/rubylens/issues"
   },
-  "homepage": "https://github.com/dylanlott/builtright#readme",
+  "homepage": "https://github.com/dylanlott/rubylens#readme",
   "dependencies": {
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.0",
